@@ -1,0 +1,272 @@
+/* ===== Global Styles ===== */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Seamless cinematic gradient for the entire site */
+    background: radial-gradient(
+        circle at top center,
+        rgba(255, 199, 76, 0.25) 0%,     /* warm gold glow */
+        rgba(28, 31, 38, 0.85) 45%,      /* blue-grey midtone */
+        rgba(10, 10, 15, 1) 100%         /* deep cinema black */
+    );
+
+    background-attachment: fixed;
+    color: #F2F2F2;
+    line-height: 1.6;
+}
+
+
+
+/* =========================================================
+   NAVIGATION (DESKTOP + MOBILE WITH HAMBURGER MENU)
+   ========================================================= */
+
+nav {
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* Dark gradient strip for readability */
+    background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 8, 0.85),
+        rgba(5, 5, 8, 0.00)
+    );
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hamburger icon (mobile only) */
+.mobile-menu-button {
+    display: none;
+    font-size: 32px;
+    color: #F2C232;
+    cursor: pointer;
+}
+
+/* Container for nav links */
+.nav-links {
+    display: flex;
+    gap: 36px;
+}
+
+/* Desktop links */
+nav a {
+    color: #F2C232;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+nav a:hover {
+    color: #FFFFFF;
+}
+
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo-container {
+    text-align: center;
+    padding: 50px 0 30px;
+}
+
+.logo-container img {
+    max-width: 480px;
+    width: 85%;
+}
+
+
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    background: transparent;
+}
+
+h1, h2 {
+    color: #F2C232;
+}
+
+p, li {
+    color: #F2F2F2;
+}
+
+
+
+/* =========================================================
+   MOBILE RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .mobile-menu-button {
+        display: block;
+    }
+
+    /* Hide links until menu opened */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 12px;
+        animation: slideDown 0.25s ease-out forwards;
+    }
+
+    /* Reveal menu when toggled */
+    .nav-links.open {
+        display: flex;
+    }
+
+    /* Bigger tap zones */
+    nav a {
+        padding: 10px 0;
+        font-size: 18px;
+        display: block;
+    }
+
+    .logo-container img {
+        max-width: 350px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .logo-container img {
+        max-width: 300px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    p, li {
+        font-size: 16px;
+    }
+}
+
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* =========================================================
+   FOOTER — matches existing theme
+   ========================================================= */
+
+.site-footer {
+    margin-top: 40px;
+    border-top: 1px solid rgba(242, 194, 50, 0.25); /* subtle gold line */
+    background: linear-gradient(
+        to top,
+        rgba(5, 5, 8, 0.85),
+        rgba(5, 5, 8, 0.35)
+    ); /* echoes nav strip */
+    color: #F2F2F2;
+}
+
+.footer-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 18px 20px 24px;
+    text-align: center;
+}
+
+.footer-brandline {
+    margin-bottom: 8px;
+    opacity: 0.95;
+}
+
+.footer-brand {
+    color: #F2C232;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+}
+
+.footer-sep {
+    color: rgba(242, 194, 50, 0.8);
+    margin: 0 8px;
+}
+
+.footer-tagline {
+    color: #E8E8E8;
+}
+
+.footer-links {
+    margin: 8px 0 10px;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #F2C232;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.footer-links a:hover {
+    color: #FFFFFF;
+}
+
+.footer-links span {
+    color: #9a8b55; /* softer gold dot between links */
+}
+
+.footer-contact a {
+    color: #F2F2F2;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.footer-copy {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #CFCFCF;
+    opacity: 0.95;
+}
+
+/* Small screens: keep everything centered and readable */
+@media (max-width: 480px) {
+    .footer-links {
+        gap: 8px;
+    }
+}
