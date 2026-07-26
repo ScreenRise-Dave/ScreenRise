@@ -112,10 +112,16 @@ p, li {
    ========================================================= */
 
 @media (max-width: 768px) {
-
     /* Show hamburger */
+    nav {
+    flex-direction: column;
+    align-items: flex-start;
+    }
+    
     .mobile-menu-button {
         display: block;
+        width: 100%;
+        text-align: left;
     }
 
     /* Hide links until menu opened */
