@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About – ScreenRise</title>
+    <title>ScreenRise</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav>
-    <div class="mobile-menu-button" onclick="toggleMenu()">☰</div>
+    <button
+        id="menuBtn"
+        class="mobile-menu-button"
+        aria-label="Open navigation menu">
+        ☰
+    </button>
 
-    <div class="nav-links">
+    <div id="navLinks" class="nav-links">
+
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="films.html">Films</a>
         <a href="funding.html">Fundraising</a>
         <a href="contact.html">Contact</a>
+
     </div>
 </nav>
 
@@ -39,45 +46,17 @@
 </div>
 
 
+
 <!-- Footer -->
 <footer class="site-footer">
   <div class="footer-inner">
-
-    <nav class="footer-links" aria-label="Footer">
-      <a href="index.html">Home</a>
-      <span>·</span>
-      <a href="about.html">About</a>
-      <span>·</span>
-      <a href="films.html">Films</a>
-      <span>·</span>
-      <a href="funding.html">Fundraising</a>
-      <span>·</span>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-
     <div class="footer-copy">© <span id="year"></span> ScreenRise</div>
   </div>
 </footer>
-
-<script>
-  // Mobile menu toggle (respects your existing classes)
-  (function () {
-    var btn = document.getElementById('menuBtn');
-    var links = document.getElementById('navLinks');
-    if (btn && links) {
-      btn.addEventListener('click', function () {
-        links.classList.toggle('open');
-      });
-    }
-  })();
-
-  // Set current year in footer
-  (function () {
-    var y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  })();
-</script>
+    
+<script src="script.js"></script>
 
 </body>
 </html>
+
+
