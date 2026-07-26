@@ -1,161 +1,282 @@
-<div class="container">
+# ScreenRise Films Page Administration Guide
 
-    <h1>Films Page Administration Guide</h1>
+## Purpose
+
+The Films page is the showcase for ScreenRise productions.
+
+It provides visibility of current, future and completed projects while
+demonstrating the opportunities ScreenRise creates for emerging actors,
+writers, directors and crew.
+
+Each production should be represented using a standard Film Card.
+
+New productions should always be added by copying an existing Film Card
+rather than creating new layouts.
+
+---
+
+## Film Lifecycle
+
+Films should generally progress through the following stages:
+
+1. Development
+2. Pre-Production
+3. Production
+4. Post-Production
+5. Released
+6. Festival Circuit
+7. Archived
+
+Status values shown on Film Cards should reflect the current stage.
+
+---
+
+## Adding A New Film
+
+1. Open `films.html`
+2. Locate the **Current Productions** section.
+3. Copy an existing Film Card.
+4. Paste the Film Card immediately below the most recent project.
+5. Update the title, status, synopsis and credits.
+6. Add a poster and trailer if available.
+7. Save and test the page.
+
+---
+
+## Film Card Template
+
+```html
+<div class="film-card">
+
+    images/example-poster.jpg
+
+    <h3>Film Title</h3>
+
+    <p><strong>Status:</strong> In Development</p>
 
     <p>
-        This document explains how to maintain and update the
-        ScreenRise Films page as new productions are announced,
-        developed and released.
-    </p>
-
-    <h2>Purpose Of The Films Page</h2>
-
-    <p>
-        The Films page is the showcase for ScreenRise productions.
-        It provides visibility of current, future and completed
-        projects, while demonstrating the opportunities ScreenRise
-        creates for emerging talent.
-    </p>
-
-    <p>
-        Each film is represented by a Film Card. New productions
-        should always be added by copying an existing Film Card
-        rather than creating new page layouts.
-    </p>
-
-    <h2>Adding A New Film</h2>
-
-    <ol>
-        <li>Open <strong>films.html</strong>.</li>
-        <li>Locate the Current Productions section.</li>
-        <li>Copy an existing Film Card.</li>
-        <li>Paste the Film Card immediately below the most recent project.</li>
-        <li>Update the title, status, synopsis and other information.</li>
-        <li>Save the page and test locally.</li>
-    </ol>
-
-    <h2>Film Card Template</h2>
-
-<pre>
-&lt;div class="film-card"&gt;
-
-    &lt;img src="images/example-poster.jpg"
-         alt="Film Poster"
-         class="film-poster"&gt;
-
-    &lt;h3&gt;Film Title&lt;/h3&gt;
-
-    &lt;p&gt;&lt;strong&gt;Status:&lt;/strong&gt; In Development&lt;/p&gt;
-
-    &lt;p&gt;
         Brief synopsis goes here.
-    &lt;/p&gt;
-
-    &lt;p&gt;
-        &lt;strong&gt;Director:&lt;/strong&gt; Name
-    &lt;/p&gt;
-
-    &lt;p&gt;
-        &lt;strong&gt;Cast:&lt;/strong&gt; To Be Announced
-    &lt;/p&gt;
-
-    &lt;p&gt;
-        &lt;strong&gt;Festival Targets:&lt;/strong&gt; Liverpool, Leeds
-    &lt;/p&gt;
-
-    &lt;p&gt;
-        &lt;a href="#"&gt;IMDb&lt;/a&gt; |
-        &lt;a href="#"&gt;Trailer&lt;/a&gt; |
-        &lt;a href="#"&gt;Gallery&lt;/a&gt;
-    &lt;/p&gt;
-
-&lt;/div&gt;
-</pre>
-
-    <h2>Film Status Values</h2>
-
-    <ul>
-        <li><strong>Development</strong> – Concept, script or planning stage.</li>
-        <li><strong>Pre-Production</strong> – Casting, crew recruitment and preparation.</li>
-        <li><strong>Production</strong> – Principal photography is underway.</li>
-        <li><strong>Post-Production</strong> – Editing and finishing work is underway.</li>
-        <li><strong>Released</strong> – Film is complete and publicly available.</li>
-    </ul>
-
-    <h2>Managing Posters</h2>
-
-    <p>
-        All film posters should be stored within the
-        <strong>images</strong> folder.
     </p>
 
-<pre>
+    <p>
+        <strong>Director:</strong> Name
+    </p>
+
+    <p>
+        <strong>Cast:</strong> To Be Announced
+    </p>
+
+    <p>
+        <strong>Festival Targets:</strong>
+        Liverpool, Leeds, Manchester
+    </p>
+
+    <p>
+        <a href="#">IMDb</a> |
+        <a href="#">Trailer</a> |
+        <a href="#">Gallery</a>
+    </p>
+
+    <div class="trailer-container">
+
+        https://www.youtube.com/embed/VIDEO_ID
+        </iframe>
+
+    </div>
+
+</div>
+```
+
+---
+
+## Film Status Values
+
+| Status | Meaning |
+|----------|----------|
+| Development | Concept, script or planning stage |
+| Pre-Production | Casting, crew recruitment and preparation |
+| Production | Filming is underway |
+| Post-Production | Editing and finishing work underway |
+| Released | Film is publicly available |
+| Archived | Retained for historical reference |
+
+---
+
+## Managing Posters
+
+All posters should be stored in the `images` folder.
+
+Folder structure:
+
+```text
 images/
     film-one-poster.jpg
     film-two-poster.jpg
     film-three-poster.jpg
-</pre>
+```
 
-    <p>
-        Reference the poster within the Film Card using:
-    </p>
+Example:
 
-<pre>
-&lt;img src="images/film-one-poster.jpg"
-     alt="Film One Poster"
-     class="film-poster"&gt;
-</pre>
+```html
+images/film-one-poster.jpg
+```
 
-    <h2>Managing Trailers</h2>
+Poster naming convention:
 
-    <p>
-        Trailers should be uploaded to YouTube and embedded
-        within a Film Card.
-    </p>
+```text
+film-title-poster.jpg
+```
 
-<pre>
-&lt;div class="trailer-container"&gt;
+Examples:
 
-    &lt;iframe
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        title="Film Trailer"
-        allowfullscreen&gt;
-    &lt;/iframe&gt;
+```text
+the-last-train-poster.jpg
+city-lights-poster.jpg
+voices-poster.jpg
+```
 
-&lt;/div&gt;
-</pre>
+---
 
-    <p>
-        Do not upload video files directly to the website.
-        Use YouTube hosting and embed the trailer instead.
-    </p>
+## Managing Trailers
 
-    <h2>Ordering Films</h2>
+Trailers should be hosted on YouTube.
 
-    <p>
-        Films should normally be displayed in the following order:
-    </p>
+Do NOT upload video files directly to the website unless absolutely necessary.
 
-    <ol>
-        <li>Current Productions</li>
-        <li>Films In Production</li>
-        <li>Recently Released Films</li>
-        <li>Archive Productions</li>
-    </ol>
+Embed trailers using:
 
-    <p>
-        The newest and most active projects should always appear first.
-    </p>
+```html
+<div class="trailer-container">
 
-    <h2>Design Principles</h2>
-
-    <ul>
-        <li>Do not create custom layouts for individual films.</li>
-        <li>Use Film Cards consistently.</li>
-        <li>Keep synopsis text concise.</li>
-        <li>Use posters where available.</li>
-        <li>Embed trailers using YouTube.</li>
-        <li>Present ScreenRise professionally and consistently.</li>
-    </ul>
+    https://www.youtube.com/embed/VIDEO_ID
+    </iframe>
 
 </div>
+```
+
+To find the VIDEO_ID:
+
+Example YouTube URL:
+
+```text
+https://www.youtube.com/watch?v=abcd1234
+```
+
+VIDEO_ID:
+
+```text
+abcd1234
+```
+
+Embed URL:
+
+```text
+https://www.youtube.com/embed/abcd1234
+```
+
+---
+
+## Film Card Links
+
+Film Cards may contain links to supporting resources.
+
+### IMDb
+
+Use this when the film has an IMDb entry.
+
+Example:
+
+```html
+https://www.imdb.com/title/tt12345678/
+   IMDb
+</a>
+```
+
+### Trailer
+
+Use this when a public trailer is available.
+
+Example:
+
+```html
+https://www.youtube.com/watch?v=abcd1234
+   Trailer
+</a>
+```
+
+### Gallery
+
+Use this when a dedicated gallery page exists.
+
+Example:
+
+```html
+gallery-the-last-train.html
+   Gallery
+</a>
+```
+
+A gallery page may contain:
+
+- Production photographs
+- Behind-the-scenes images
+- Posters
+- Marketing assets
+- Festival photographs
+- Award announcements
+
+---
+
+## Films Without Links
+
+When a film is still in development, it is acceptable to use:
+
+```html
+<p>
+    IMDb • Trailer • Gallery
+</p>
+```
+
+or
+
+```html
+<p>
+    <em>Links will be added when available.</em>
+</p>
+```
+
+Avoid publishing links that do not work.
+
+---
+
+## Ordering Films
+
+Display films in the following order:
+
+1. Current Productions
+2. Films In Production
+3. Recently Released Films
+4. Archived Productions
+
+The most active or newest projects should appear first.
+
+---
+
+## Design Principles
+
+- Use Film Cards consistently
+- Keep synopsis text concise
+- Use one poster per film
+- Host trailers on YouTube
+- Keep layouts consistent
+- Do not create custom card layouts per film
+- Present ScreenRise professionally
+- Prioritise readability over visual complexity
+
+---
+
+## ScreenRise Principle
+
+Film production is our mechanism.
+
+Creating opportunity is our purpose.
