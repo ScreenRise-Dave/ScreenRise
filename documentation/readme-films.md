@@ -87,6 +87,68 @@ Status values shown on Film Cards should reflect the current stage.
 </div>
 ```
 
+## Sample Film Card (Example Only)
+
+The example below demonstrates a fully populated Film Card including a poster, IMDb link, trailer link, gallery link and embedded trailer.
+
+```html
+<div class="film-card">
+
+    <img src="images/the-last-train-poster.jpg"
+         alt="The Last Train Poster"
+         class="film-poster">
+
+    <h3>The Last Train</h3>
+
+    <p><strong>Status:</strong> Released</p>
+
+    <p>
+        A short drama exploring friendship, loss and second chances
+        on the final train home.
+    </p>
+
+    <p>
+        <strong>Director:</strong> Jane Smith
+    </p>
+
+    <p>
+        <strong>Cast:</strong> John Brown, Sarah Green
+    </p>
+
+    <p>
+        <strong>Festival Selections:</strong>
+        Liverpool, Leeds and Manchester
+    </p>
+
+    <p>
+        <a href="https://www.imdb.com/title/tt0111161/"
+           target="_blank">IMDb</a>
+        |
+
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="The Last Train Trailer"
+            allowfullscreen-|----------|
+| film-poster | Displays the poster image |
+| h3 | Film title |
+| Status | Current lifecycle stage |
+| Synopsis | Brief description of the film |
+| Director | Named production lead |
+| Cast | Principal cast members |
+| Festival Selections | Festivals, awards or screenings |
+| IMDb Link | External IMDb page |
+| Trailer Link | Opens trailer in YouTube |
+| Gallery Link | Opens local gallery page |
+| Embedded Trailer | Plays trailer directly within the card |
+
+### Notes
+
+- External links should normally use `target="_blank"` so that they open in a new browser tab.
+- Posters should be stored within the `images` folder.
+- Trailers should generally be hosted on YouTube and embedded rather than uploaded directly to the website.
+- The Gallery link is optional and only required if a dedicated gallery page exists.
+
+
 ---
 
 ## Film Status Values
