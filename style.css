@@ -114,7 +114,11 @@ nav a:hover {
    ========================================================= */
 
 .film-card {
-    background: rgba(255,255,255,0.04);
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.03)
+    );
     border: 1px solid rgba(242,194,50,0.25);
     border-left: 4px solid #F2C232;
     border-radius: 12px;
@@ -167,6 +171,32 @@ nav a:hover {
 
 .film-poster:hover {
     transform: scale(1.02);
+}
+
+/* =========================================================
+   TRAILERS
+   ========================================================= */
+
+.trailer-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-top: 20px;
+}
+
+.trailer-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.35);
 }
 
 
