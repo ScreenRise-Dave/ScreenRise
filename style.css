@@ -92,7 +92,7 @@ nav a:hover {
 }
 
 .logo-container img {
-    max-width: 480px;
+    max-width: 380px;
     width: 85%;
 }
 
@@ -107,6 +107,37 @@ nav a:hover {
     margin: 0 auto;
     padding: 20px;
     background: transparent;
+}
+
+/* =========================================================
+   HOME PAGE HERO
+   ========================================================= */
+
+.hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px 0;
+}
+
+.hero h1 {
+    color: #F2C232;
+    font-size: 4.5rem;
+    line-height: 1.0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 25px 0;
+    text-shadow:
+        0 2px 8px rgba(0,0,0,0.6),
+        0 4px 16px rgba(0,0,0,0.4);
+}
+
+.hero-tagline {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 1.35rem;
+    color: #F2F2F2;
+    font-weight: 300;
+    line-height: 1.5;
 }
 
 h1, h2 {
@@ -166,6 +197,20 @@ p, li {
         width: 90%;
         padding: 16px;
     }
+
+    .hero {
+        margin-bottom: 40px;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-tagline {
+        font-size: 1.1rem;
+        width: 90%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -180,6 +225,14 @@ p, li {
 
     h1 {
         font-size: 24px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
     }
 
     p, li {
