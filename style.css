@@ -38,7 +38,7 @@ nav {
     );
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -63,7 +63,7 @@ nav {
 /* Container for nav links */
 .nav-links {
     display: flex;
-    gap: 36px;
+    gap: 30px;
 }
 
 /* Desktop links */
