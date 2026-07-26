@@ -288,3 +288,49 @@ p, li {
         gap: 8px;
     }
 }
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+
+.contact-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(242,194,50,0.30);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+
+    backdrop-filter: blur(4px);
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,0.35),
+        0 0 20px rgba(242,194,50,0.08);
+}
+
+.contact-card h2 {
+    margin-top: 0;
+    color: #F2C232;
+}
+
+.contact-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+
+    background: #F2C232;
+    color: #111111;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.contact-button:hover {
+    background: #FFD75E;
+    transform: translateY(-2px);
+}
