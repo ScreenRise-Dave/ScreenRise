@@ -110,6 +110,29 @@ nav a:hover {
 }
 
 /* =========================================================
+   FILM CARDS
+   ========================================================= */
+
+.film-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(242,194,50,0.25);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0 40px 0;
+    transition: all 0.3s ease;
+}
+
+.film-card:hover {
+    border-color: rgba(242,194,50,0.6);
+    background: rgba(255,255,255,0.08);
+}
+
+.film-card h3 {
+    color: #F2C232;
+    margin-top: 0;
+}
+
+/* =========================================================
    HOME PAGE HERO
    ========================================================= */
 
