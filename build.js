@@ -54,8 +54,17 @@ function buildTree(dir, relativeDir = "") {
             const extension = path.extname(entry.name).toLowerCase();
 
             // Only include documentation file types
-            if (extension !== ".md" && extension !== ".docx") {
-                continue;
+            let documentType;
+
+            switch (extension) {
+                case ".docx":
+                     documentType = "Word document";
+                     break;
+                case ".pdf":
+                     documentType = "PDF document";
+                     break;
+                default:
+                     documentType = "Markdown document";
             }
 
             const documentType =
