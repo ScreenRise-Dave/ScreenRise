@@ -56,21 +56,20 @@ function buildTree(dir, relativeDir = "") {
             // Only include documentation file types
             let documentType;
 
-            switch (extension) {
-                case ".docx":
-                     documentType = "Word document";
-                     break;
-                case ".pdf":
-                     documentType = "PDF document";
-                     break;
-                default:
-                     documentType = "Markdown document";
-            }
+        switch (extension) {
+            case ".docx":
+                documentType = "Word document";
+                break;
+            case ".pdf":
+                documentType = "PDF document";
+                break;
+            case ".md":
+                documentType = "Markdown document";
+                break;
+            default:
+                documentType = "File";
+        }
 
-            const documentType =
-                extension === ".docx"
-                    ? "Word document"
-                    : "Markdown document";
 
             html += `
                 <li class="file">
