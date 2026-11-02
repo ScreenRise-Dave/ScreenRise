@@ -1,0 +1,144 @@
+﻿Yes. Here's the concise position I'd use if you need to capture or hand this over.
+
+Current diagnosis
+
+We believe the problem is most likely corruption or inconsistency in the per-user Windows Push Notification (WPN) state/database, rather than a rogue third-party application.
+
+The affected service is the dynamically created per-user service:
+
+WpnUserService_<suffix>
+
+
+It is consuming ~1.1 to 1.9 GB RAM and significant CPU, with memory continuing to grow.
+
+The strongest evidence is:
+
+Restarting Windows does not resolve it.
+Settings → System → Notifications won't open.
+The problem still occurs after restarting with Wi-Fi disabled, so an active WNS/network connection is not required to trigger it.
+The PushNotifications event log contains registration failures with SQLITE_CONSTRAINT_ROWID affecting multiple unrelated applications, including Teams, Office Hub, WhatsApp, Windows Settings and Windows App Runtime.
+We saw 12 × Event 2413, 1 × 2414 and 3 × 2415 in the sample checked.
+Microsoft describes WNS as the Windows mechanism through which applications establish notification channels and receive push notifications.
+Microsoft support has recommended resetting %LOCALAPPDATA%\Microsoft\Windows\Notifications for Notification Center problems on Windows 11 build 26200.
+
+Taken together, the SQLite errors plus the runaway WPN process and broken Notifications Settings make the local notification database/state our leading suspect.
+
+What we've done
+1. Restarted Windows
+
+No improvement. A newly suffixed WPN user service exhibited the same runaway behaviour.
+
+2. Investigated networking
+
+The active NIC is:
+
+Intel(R) Wi-Fi 6E AX210 160MHz
+Driver: 24.70.0.3
+Date: 29/07/2026
+
+
+We initially investigated this because Event 1247 reported that WPN couldn't configure its connection correctly for low-power states and suggested checking network drivers.
+
+3. Tested with networking removed
+
+We restarted Windows with Wi-Fi disabled.
+
+WpnUserService_3a3df still climbed to approximately 1.1 GB RAM.
+
+That substantially weakens the hypothesis that the Intel Wi-Fi driver or external WNS connectivity is the root cause.
+
+4. Checked Windows system files
+
+We ran:
+
+DISM.exe /Online /Cleanup-Image /RestoreHealth
+
+
+DISM reached 100% but failed:
+
+Error: 0x800f0915
+The repair content could not be found anywhere.
+
+
+There is also an interesting version difference:
+
+DISM Version:  10.0.26100.9549
+Image Version: 10.0.26200.9711
+
+
+We therefore shouldn't interpret the failed DISM operation as proof that Windows is corrupt.
+
+We subsequently ran:
+
+sfc /scannow
+
+
+and received:
+
+Windows Resource Protection did not find any integrity violations.
+
+
+So SFC found no damaged protected Windows system files.
+
+5. Investigated WPN event logs
+
+This produced the most compelling evidence.
+
+Push Notification registration attempts from several unrelated applications returned:
+
+SQLITE_CONSTRAINT_ROWID
+
+
+including Windows' own windows.immersivecontrolpanel.
+
+That is particularly interesting given that Windows Settings → Notifications itself isn't working.
+
+6. Tried stopping the affected service
+
+We attempted to stop:
+
+WpnUserService_3a3df
+
+
+Windows kept it running.
+
+We established its PID and confirmed that only WpnUserService was hosted in that particular process, then terminated that process.
+
+Windows promptly restarted/recreated the service.
+
+Therefore we have stopped trying to kill it from the normal interactive Windows session.
+
+What we plan to do next
+
+The next step is a controlled rebuild of the per-user Windows Notification state.
+
+The relevant location is:
+
+%LOCALAPPDATA%\Microsoft\Windows\Notifications
+
+
+This is where wpndatabase.db and its associated notification state reside. Microsoft support has also recommended clearing this location and restarting when diagnosing broken Windows 11 Notification Center behaviour.
+
+However, rather than deleting it, our plan is to:
+
+Boot into an environment where the user's WpnUserService isn't holding the database open, most likely Safe Mode.
+Rename the existing Notifications directory rather than delete it.
+Keep the renamed directory as a backup.
+Restart Windows normally.
+Allow Windows to generate fresh notification state.
+Check whether:
+WpnUserService memory stays normal.
+sustained CPU usage disappears.
+Settings → System → Notifications opens again.
+the SQLITE_CONSTRAINT_ROWID errors stop occurring.
+Reconnect normally and confirm applications can establish their notification channels again.
+
+If that fixes all three symptoms, it provides strong practical evidence that the old per-user WPN state/database was responsible.
+
+If it doesn't, I would leave the freshly generated database in place and investigate the Windows 26200 servicing/notification platform itself next, rather than going back to the Wi-Fi driver. There is documented Microsoft support discussion of Notification Center problems on the Windows 11 26200 build family.
+
+In short:
+
+Working hypothesis: damaged/inconsistent per-user Windows Push Notification state.
+ Evidence: runaway WpnUserService + broken Notifications Settings + SQLite registration errors across multiple apps + problem reproduces offline.
+ Next action: safely rebuild the per-user Notifications database/state and retest before pursuing wider Windows repair.
